@@ -1,0 +1,73 @@
+section.projects 
+{ 
+    height: 100%;
+    width: 30%;
+    background: linear-gradient(to top left, powderblue, pink);
+    border-radius: 0.8em;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+div.section-title
+{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+button.add-button
+{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    background: #1D4EFF;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    transition: all .2s;
+}
+button.add-button:hover{
+    box-shadow: 0px 0px 10px 4px #1D4EFF;
+
+
+}
+
+div.all-items
+{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    width: 100%;
+}
+div.item
+{
+    display: block;
+    background-color: black;
+    color: #fff;
+    width: 100%;
+    margin-bottom: 10px;
+
+}
+
+div.all-items div.item:last-child
+{
+    margin-bottom: 0;
+}
+
+span.item-title 
+{   
+    display: block;
+    text-align: center;
+    font-size: 1.3em;
+}

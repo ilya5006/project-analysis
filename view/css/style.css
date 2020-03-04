@@ -3,17 +3,27 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: "Comfortaa", sans-serif;
 }
 
 html
 {
     height: 100%;
+    background-color: #C4C4C4;
 }
 
 body
 {
     padding-top: 15px;
     min-height: 100%;
+}
+main 
+{
+    padding: 50px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
 }
 .container 
 {
