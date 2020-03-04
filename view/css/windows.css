@@ -1,7 +1,6 @@
-section.projects 
+section.projects, section.targets-works
 { 
-    height: 100%;
-    width: 30%;
+    /* width: 30%; */
     background: linear-gradient(to top left, powderblue, pink);
     border-radius: 0.8em;
     display: flex;
@@ -9,22 +8,35 @@ section.projects
     align-items: center;
     justify-content: flex-start;
     padding: 10px;
+
+    transition: all .4s;
+    overflow: auto;
+}
+
+section.projects
+{
+    max-height: 100%;
 }
 
 div.section-title
 {
     width: 100%;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column nowrap;
     justify-content: space-evenly;
-    align-items: center;
-    
+    align-items: center; 
 }
+
+h1.section-title
+{
+    margin-bottom: 10px;
+}
+
 button.add-button
 {
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 14px;
     text-align: center;
     color: #FFFFFF;
@@ -32,13 +44,12 @@ button.add-button
     border-radius: 20px;
     outline: none;
     border: none;
-    padding: 5px 10px;
+    padding: 5% 7%;
     transition: all .2s;
 }
+
 button.add-button:hover{
     box-shadow: 0px 0px 10px 4px #1D4EFF;
-
-
 }
 
 div.all-items
@@ -50,6 +61,12 @@ div.all-items
     padding: 10px;
     width: 100%;
 }
+
+div.all-items div.item:last-child
+{
+    margin-bottom: 0;
+}
+
 div.item
 {
     display: block;
@@ -58,11 +75,31 @@ div.item
     width: 100%;
     margin-bottom: 10px;
 
+    border-radius: 0.8em;
+    transition: all .2s;
 }
 
-div.all-items div.item:last-child
+div.item:hover
 {
-    margin-bottom: 0;
+    box-shadow: 5px 5px 12px 1px #000;
+}
+
+div.active-item
+{
+    background-color: #A1FF92;
+    color: #000;
+    transition: all .2s;
+}
+
+div.active-item:hover
+{
+    box-shadow: 5px 5px 12px 1px #A1FF92;
+}
+
+div.item:hover, div.active-item:hover
+{
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 span.item-title 
@@ -70,4 +107,48 @@ span.item-title
     display: block;
     text-align: center;
     font-size: 1.3em;
+    padding: 10px;
+    
+}
+
+@media all and (max-width: 1050px)
+{
+    section.projects 
+    {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    section.projects div.project-list
+    {
+        justify-content: space-between;
+    }
+    section.projects div.all-items
+    {
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+    }
+    section.projects div.item
+    {
+        display: inline-block;
+        width: auto;
+    }
+}
+
+@media all and (max-width: 553px)
+{
+    section.targets-works
+    {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    main section.targets-works:last-child
+    {
+        margin-bottom: 0px;
+    }
+
+    div.project-list
+    {
+        justify-content: center;
+    }
 }

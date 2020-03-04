@@ -15,47 +15,46 @@
 </head>
 <body>
     <div class="container">
-        <div class="wrapper">
-            <div>
-                <?php
-                include './view/buttons.html';
+        <main>
 
-                ?>
+            <div id="task_creating_form">
+                <button id="to_close_task_creating">Закрыть</button>
+                <input type="text" placeholder="Введите имя задачи" id="task_creating_name">
+                <input type="text" placeholder="Введите продолжительность задачи (часы): " id="task_creating_duration">
+                <input type="text" placeholder="Введите трудозатратность задачи (человеко-часов): " id="task_creating_labor_input">
+                <input type="text" placeholder="Введите вероятность риска задачи" id="task_creating_risk">
+                <button id="to_send_task">Готово</button>
             </div>
-            <main>
+
+            <div id="project">
+                <div class="tasks"> 
+                    <div class="task">
+                        <p class="task_name"></p>
+                        <p class="task_durataion"></p>
+                        <p class="task_labor_input"></p>
+                        <p class="task_risk"></p>
+                    </div> 
+                </div>
+
+                <div id="task_total">
+                    <p class="task_total_duration"></p>
+                    <p class="task_total_labor_input"></p>
+                    <p class="task_total_risks"></p>
+                </div>
+            </div>
+            <?php
+                include './view/buttons.html';
+            ?>
+            <div class="project-list">
                 <?php
                 include './view/projects.html';
                 include './view/targets.html';
                 include './view/works.html';
                 ?>
-            </main>
-        </div>
+            </div>
+        </main>
     </div>
 </body>
 </html>
-<!-- 
-        <div id="task_creating_form">
-            <button id="to_close_task_creating">Закрыть</button>
-            <input type="text" placeholder="Введите имя задачи" id="task_creating_name">
-            <input type="text" placeholder="Введите продолжительность задачи (часы): " id="task_creating_duration">
-            <input type="text" placeholder="Введите трудозатратность задачи (человеко-часов): " id="task_creating_labor_input">
-            <input type="text" placeholder="Введите вероятность риска задачи" id="task_creating_risk">
-            <button id="to_send_task">Готово</button>
-        </div>
 
-        <div id="project">
-            <div class="tasks"> 
-                 <div class="task">
-                    <p class="task_name"></p>
-                    <p class="task_durataion"></p>
-                    <p class="task_labor_input"></p>
-                    <p class="task_risk"></p>
-                </div> 
-             </div>
-
-            <div id="task_total">
-                <p class="task_total_duration"></p>
-                <p class="task_total_labor_input"></p>
-                <p class="task_total_risks"></p>
-            </div> 
-        </div> -->
+        
