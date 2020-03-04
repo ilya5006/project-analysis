@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project analysis</title>
 
-    <link rel="stylesheet" href="./style.css">
-    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./view/css/style.css">
+    <script src="./model/js/Classes/ProjectAnalysis.js" defer></script>
+    <script src="./model/js/main.js" defer></script>
+
 </head>
 <body>
     <button id="to_show_task_creating">Создать задачу</button>
@@ -21,12 +23,14 @@
     </div>
 
     <div id="project">
-        <!-- <div class="task">
-            <p class="task_name"></p>
-            <p class="task_durataion"></p>
-            <p class="task_labor_input"></p>
-            <p class="task_risk"></p>
-        </div> -->
+        <div class="tasks">
+            <!-- <div class="task">
+                <p class="task_name"></p>
+                <p class="task_durataion"></p>
+                <p class="task_labor_input"></p>
+                <p class="task_risk"></p>
+            </div> -->
+        </div>
 
         <div id="task_total">
             <p class="task_total_duration"></p>
