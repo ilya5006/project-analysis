@@ -1,16 +1,16 @@
 let pushTaskToJSON = async () =>
 {
     let taskName = document.querySelector('#task_creating_name').value;
-    let taskDuration = document.querySelector('#task_creating_duration').value;    
-    let taskLaborInput = document.querySelector('#task_creating_labor_input').value;
-    let taskRisk = document.querySelector('#task_creating_risk').value;
+    let taskDuration = parseFloat(document.querySelector('#task_creating_duration').value);
+    let taskLaborInput = parseFloat(document.querySelector('#task_creating_labor_input').value);
+    let taskRisk = parseFloat(document.querySelector('#task_creating_risk').value);
 
     let task = 
     {
         name: taskName,
-        duration: taskDuration,
-        laborInput: taskLaborInput,
-        risk: taskRisk
+        duration: ! isNaN(taskDuration) ? taskDuration : 0,
+        laborInput: ! isNaN(taskLaborInput) ? taskLaborInput : 0,
+        risk: ! isNaN(taskRisk) ? taskRisk : 0
     }
 
     let formData = new FormData();
@@ -22,10 +22,10 @@ let pushTaskToJSON = async () =>
         body: formData
     });
 
-    getTaskFromJSON();
+    getTasksFromJSON();
 }
 
-let getTaskFromJSON = async () =>
+let getTasksFromJSON = async () =>
 {
     tasksDuration = 0.0;
     tasksRisks = 0.0;
@@ -49,8 +49,8 @@ let getTaskFromJSON = async () =>
         <div class="task">
             <p class="task_name"><span>Имя задачи:</span> ${name}</p>
             <p class="task_durataion"><span>Время для выполнения задачи (часы):</span> ${duration}</p>
-            <p class="task_labor_input"><span>Трудозатраты на выполнение задачи (человеко-часов): </span>${laborInput}</p>
-            <p class="task_risk"><span>Риски задачи: </span>${risk}</p>
+            <p class="task_labor_input"><span>Трудозатраты на выполнение задачи (человеко-часов):</span> ${laborInput}</p>
+            <p class="task_risk"><span>Риски задачи:</span> ${risk}</p>
         </div>
         `);
     });
@@ -69,7 +69,7 @@ let tasksDuration = 0.0;
 let tasksRisks = 0.0;
 let tasksLaborInputs = 0.0;
 
-getTaskFromJSON();
+getTasksFromJSON();
 
 toShowTaskCreating.addEventListener('click', () =>
 {
