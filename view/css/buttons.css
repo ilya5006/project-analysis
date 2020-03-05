@@ -11,11 +11,15 @@
 
 #project_add,#to_show_task_creating
 { 
-    border-radius: 0.2em;
-    border: 1px solid black;
+    border-radius: 3em;
+    /* border: 1px solid black; */
     padding: 10px 15px;
     margin: 0 15px 0 0;
     transition: 0.3s;
+    background-color: #000;
+    color: #fff;
+    outline: none;
+    border: none;
 }
 
 #to_show_task_creating

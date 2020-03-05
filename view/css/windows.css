@@ -1,7 +1,8 @@
 section.projects, section.targets-works
 { 
     /* width: 30%; */
-    background: linear-gradient(to top left, powderblue, pink);
+    /* background: linear-gradient(to top left, powderblue, pink); */
+    background-color: gray;
     border-radius: 0.8em;
     display: flex;
     flex-flow: column nowrap;

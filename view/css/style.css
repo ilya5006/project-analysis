@@ -8,13 +8,14 @@
 
 html
 {
-    height: 100%;
-    background-color: #C4C4C4;
+    height: 100%;   
 }
 
 body
 {
     height: 100%;
+    /* background-color: #C4C4C4; */
+    background-color: #3C3C3C;
 }
 
 main 
