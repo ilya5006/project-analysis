@@ -44,7 +44,7 @@ button.add-button
     border-radius: 20px;
     outline: none;
     border: none;
-    padding: 5% 7%;
+    padding: 10px 15px;
     transition: all .2s;
 }
 
@@ -131,6 +131,10 @@ span.item-title
     {
         display: inline-block;
         width: auto;
+    }
+    section.targets-works
+    {
+        width: 45%;
     }
 }
 
