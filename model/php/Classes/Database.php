@@ -29,12 +29,19 @@
 
         public function query($query)
         {
+            $result = $this->mysqli->query($query);
+            return $result->fetch_assoc();
+        }
 
+        public function queryAll($query)
+        {
+            $result = $this->mysqli->query($query);
+            return $result->fetch_all(MYSQLI_ASSOC);
         }
         
         public function queryExecute($query)
         {
-            
+            return $this->mysqli->query($query);
         }
     }
 
