@@ -1,33 +1,29 @@
 class ProjectAnalysis
 {
-    async pushTaskToJSON()
+    async pushTask()
     {
         let taskName = document.querySelector('#task_creating_name').value;
         let taskDuration = parseFloat(document.querySelector('#task_creating_duration').value);
         let taskLaborInput = parseFloat(document.querySelector('#task_creating_labor_input').value);
         let taskRisk = parseFloat(document.querySelector('#task_creating_risk').value);
 
-        let task = 
-        {
-            name: taskName,
-            duration: ! isNaN(taskDuration) ? taskDuration : 0,
-            laborInput: ! isNaN(taskLaborInput) ? taskLaborInput : 0,
-            risk: ! isNaN(taskRisk) ? taskRisk : 0
-        }
-
         let formData = new FormData();
-        formData.append('task', JSON.stringify(task));
 
-        fetch('./model/php/push-task-to-JSON.php',  // Такой путь потому что путь почему-то начинается с корня, а не с пути данного файла
+        formData.append('taskName', taskName);
+        formData.append('taskDuration', ! isNaN(taskDuration) ? taskDuration : 0);
+        formData.append('taskLaborInput', ! isNaN(taskLaborInput) ? taskLaborInput : 0);
+        formData.append('taskRisk', ! isNaN(taskRisk) ? taskRisk : 0);
+
+        fetch('./model/php/push-todos-to-db.php',  // Такой путь потому что путь почему-то начинается с корня, а не с пути данного файла
         {
             method: 'POST',
             body: formData
         });
 
-        this.getTasksFromJSON();
+        this.showTasks();
     }
 
-    async getTasksFromJSON ()
+    async getTasks()
     {
         tasks.innerHTML = '';
 
@@ -35,8 +31,15 @@ class ProjectAnalysis
         tasksRisks = 0.0;
         tasksLaborInputs = 0.0;
 
-        let tasksFetch = await fetch('./model/php/get-tasks-from-JSON.php'); // Такой путь потому что путь почему-то начинается с корня, а не с пути данного файла
+        let tasksFetch = await fetch('./model/php/get-todos-from-db.php'); // Такой путь потому что путь почему-то начинается с корня, а не с пути данного файла
         let tasksJSONArray = await tasksFetch.json();
+
+        return tasksJSONArray;
+    }
+
+    async showTasks()
+    {
+        let tasksJSONArray = await this.getTasks();
 
         tasksJSONArray.forEach((taskJSON) =>
         {

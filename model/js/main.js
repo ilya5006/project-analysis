@@ -12,7 +12,7 @@ let tasksDuration = 0.0;
 let tasksRisks = 0.0;
 let tasksLaborInputs = 0.0;
 
-projectAnalysis.getTasksFromJSON();
+projectAnalysis.showTasks();
 
 toShowTaskCreating.addEventListener('click', () =>
 {
@@ -28,5 +28,5 @@ toCloseTaskCreating.addEventListener('click', () =>
 
 toSendTask.addEventListener('click', () =>
 {
-    projectAnalysis.pushTaskToJSON();
+    projectAnalysis.showTasks();
 });
