@@ -43,6 +43,11 @@
         {
             return $this->mysqli->query($query);
         }
+
+        public function escapeString($str)
+        {
+            return $this->mysqli->escape_string($str);
+        }
     }
 
     $db = Database::init('localhost', 'root', '', 'project-analysis');

@@ -36,9 +36,7 @@ allProjectsDiv.addEventListener('click', (event) =>
 {
     let isProjectButton = event.target.classList.contains('project');
     if (isProjectButton)
-    {
-        projectAnalysis.
-        
+    {   
         // document.querySelector('#targets').style.display = 'flex';
         // document.querySelector('#works').style.display = 'flex';
     }
