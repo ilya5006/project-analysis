@@ -18,7 +18,7 @@
         {
             if (static::$created == 0)
             {
-                new self($host, $login, $password, $database);
+                return new self($host, $login, $password, $database);
                 static::$created = 1;
             }
             else

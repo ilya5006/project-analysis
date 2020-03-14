@@ -1,5 +1,29 @@
 class ProjectAnalysis
 {
+    async pushProject() { }
+
+    async getProjects()
+    {
+        let projectsFetch = await fetch('./model/php/get-projects-from-db.php');
+        let projectsJSONArray = await projectsFetch.json();
+
+        return projectsJSONArray;
+    }
+
+    async showProjects()
+    {
+        let projectsJSONArray = await this.getProjects();
+
+        projectsJSONArray.forEach((project) =>
+        {
+            allProjectsDiv.insertAdjacentHTML('beforeEnd', `
+            <div class="item project" data-projectId="${project.project_id}, data-"> 
+                <span class="item-title">${project.project_name}</span> 
+            </div>
+            `);
+        });
+    }
+
     async pushTask()
     {
         let taskName = document.querySelector('#task_creating_name').value;
@@ -64,5 +88,7 @@ class ProjectAnalysis
 
         taskTotal.querySelector('.task_total_duration').textContent = `Время выполнения: ${tasksDuration + tasksRisks}`;
         taskTotal.querySelector('.task_total_labor_input').textContent = `Трудозатраты: ${tasksLaborInputs}`;
+
+        this.initProjectsButtons();
     }
 }

@@ -7,12 +7,13 @@ let toSendTask = document.querySelector('#to_send_task');
 let taskTotal = document.querySelector('#task_total');
 let project = document.querySelector('#project');
 let tasks = document.querySelector('.tasks');
+let allProjectsDiv = document.querySelector('#all-projects');
 
 let tasksDuration = 0.0;
 let tasksRisks = 0.0;
 let tasksLaborInputs = 0.0;
 
-projectAnalysis.showTasks();
+projectAnalysis.showProjects();
 
 toShowTaskCreating.addEventListener('click', () =>
 {
@@ -29,4 +30,16 @@ toCloseTaskCreating.addEventListener('click', () =>
 toSendTask.addEventListener('click', () =>
 {
     projectAnalysis.showTasks();
+});
+
+allProjectsDiv.addEventListener('click', (event) =>
+{
+    let isProjectButton = event.target.classList.contains('project');
+    if (isProjectButton)
+    {
+        projectAnalysis.
+        
+        // document.querySelector('#targets').style.display = 'flex';
+        // document.querySelector('#works').style.display = 'flex';
+    }
 });
