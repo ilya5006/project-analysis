@@ -13,7 +13,6 @@
     <!-- Scripts -->
     <script src="./model/js/Classes/ProjectAnalysis.js" defer></script>
     <script src="./model/js/main.js" defer></script>
-
 </head>
 <body>
     <div class="container">
@@ -50,7 +49,7 @@
             <?php
                 include './view/projects.html';
                 include './view/targets.html';
-                include './view/works.html';
+                include './view/todos.html';
             ?>
             </div>
         </main>

@@ -7,7 +7,9 @@ let toSendTask = document.querySelector('#to_send_task');
 let taskTotal = document.querySelector('#task_total');
 let project = document.querySelector('#project');
 let tasks = document.querySelector('.tasks');
+let targets = document.querySelector('#targets');
 let allProjectsDiv = document.querySelector('#all-projects');
+let allTargetsDiv = document.querySelector('#all-targets')
 
 let tasksDuration = 0.0;
 let tasksRisks = 0.0;
@@ -34,10 +36,41 @@ toSendTask.addEventListener('click', () =>
 
 allProjectsDiv.addEventListener('click', (event) =>
 {
-    let isProjectButton = event.target.classList.contains('project');
+    let isProjectButton = event.target.tagName.toLowerCase() == 'span';
+
     if (isProjectButton)
-    {   
-        // document.querySelector('#targets').style.display = 'flex';
+    {
+        let infoDiv = event.target.parentElement;
+
+        projectAnalysis.projectId = infoDiv.dataset.id;
+        projectAnalysis.projectName = infoDiv.dataset.name;
+        projectAnalysis.projectDateCreate = infoDiv.dataset.dateCreated;
+        projectAnalysis.projectDateEnd = infoDiv.dataset.dateEnd;
+
+        projectAnalysis.showTargets();
+
+        document.querySelector('#targets').style.display = 'flex';
         // document.querySelector('#works').style.display = 'flex';
+
+    }
+});
+
+allTargetsDiv.addEventListener('click', (event) =>
+{
+    let isProjectButton = event.target.tagName.toLowerCase() == 'span';
+
+    if (isProjectButton)
+    {
+        let infoDiv = event.target.parentElement;
+
+        projectAnalysis.targetId = infoDiv.dataset.id;
+        projectAnalysis.taragetName = infoDiv.dataset.name;
+        projectAnalysis.targetDateCreate = infoDiv.dataset.dateCreated;
+        projectAnalysis.targetDateEnd = infoDiv.dataset.dateEnd;
+
+        // projectAnalysis.showTodos();
+
+        document.querySelector('#works').style.display = 'flex';
+
     }
 });
