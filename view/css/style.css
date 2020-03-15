@@ -75,3 +75,8 @@ div.project-list
     margin-top: 10px;
     border: 1px solid black;
 }
+
+.item-title
+{
+    user-select: none;
+}
