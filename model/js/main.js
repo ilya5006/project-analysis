@@ -9,7 +9,8 @@ let project = document.querySelector('#project');
 let tasks = document.querySelector('.tasks');
 let targets = document.querySelector('#targets');
 let allProjectsDiv = document.querySelector('#all-projects');
-let allTargetsDiv = document.querySelector('#all-targets')
+let allTargetsDiv = document.querySelector('#all-targets');
+let allWorksDiv = document.querySelector('#all-works'); 
 
 let tasksDuration = 0.0;
 let tasksRisks = 0.0;
@@ -44,8 +45,8 @@ allProjectsDiv.addEventListener('click', (event) =>
 
         projectAnalysis.projectId = infoDiv.dataset.id;
         projectAnalysis.projectName = infoDiv.dataset.name;
-        projectAnalysis.projectDateCreate = infoDiv.dataset.dateCreated;
-        projectAnalysis.projectDateEnd = infoDiv.dataset.dateEnd;
+        projectAnalysis.projectDateCreated = infoDiv.dataset.datecreated;
+        projectAnalysis.projectDateEnd = infoDiv.dataset.dateend;
 
         projectAnalysis.showTargets();
 
@@ -64,11 +65,11 @@ allTargetsDiv.addEventListener('click', (event) =>
         let infoDiv = event.target.parentElement;
 
         projectAnalysis.targetId = infoDiv.dataset.id;
-        projectAnalysis.taragetName = infoDiv.dataset.name;
-        projectAnalysis.targetDateCreate = infoDiv.dataset.dateCreated;
-        projectAnalysis.targetDateEnd = infoDiv.dataset.dateEnd;
+        projectAnalysis.targetName = infoDiv.dataset.name;
+        projectAnalysis.targetDateCreate = infoDiv.dataset.datecreated;
+        projectAnalysis.targetDateEnd = infoDiv.dataset.dateend;
 
-        // projectAnalysis.showTodos();
+        projectAnalysis.showWorks();
 
         document.querySelector('#works').style.display = 'flex';
 

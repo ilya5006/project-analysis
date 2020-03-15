@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 05 2020 г., 10:20
--- Версия сервера: 5.7.19
--- Версия PHP: 7.1.7
+-- Время создания: Мар 15 2020 г., 23:22
+-- Версия сервера: 8.0.15
+-- Версия PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `projects` (
   `project_id` int(11) NOT NULL,
-  `project_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `project_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `project_date_created` datetime NOT NULL,
   `project_date_end` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -40,7 +40,8 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`project_id`, `project_name`, `project_date_created`, `project_date_end`) VALUES
-(2, 'Desktop Windows 10', '2020-03-02 09:12:38', '2020-03-31 12:00:00');
+(2, 'Desktop Windows 10', '2020-03-02 09:12:38', '2020-03-31 12:00:00'),
+(3, 'Анализ проекта', '2020-03-14 00:00:00', '2020-03-25 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -50,7 +51,7 @@ INSERT INTO `projects` (`project_id`, `project_name`, `project_date_created`, `p
 
 CREATE TABLE `risks` (
   `risk_id` int(11) NOT NULL,
-  `risk_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `risk_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `risk_type` tinyint(1) NOT NULL,
   `todo_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -71,7 +72,7 @@ INSERT INTO `risks` (`risk_id`, `risk_name`, `risk_type`, `todo_id`) VALUES
 
 CREATE TABLE `risk_types` (
   `type_id` tinyint(1) NOT NULL,
-  `type_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `type_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -90,7 +91,7 @@ INSERT INTO `risk_types` (`type_id`, `type_name`) VALUES
 
 CREATE TABLE `targets` (
   `target_id` int(11) NOT NULL,
-  `target_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `target_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `target_date_created` datetime NOT NULL,
   `target_date_end` datetime NOT NULL,
   `project_id` int(11) NOT NULL
@@ -102,27 +103,28 @@ CREATE TABLE `targets` (
 
 INSERT INTO `targets` (`target_id`, `target_name`, `target_date_created`, `target_date_end`, `project_id`) VALUES
 (1, 'Грфическая оболочка', '2020-03-02 04:00:00', '2020-03-07 08:34:21', 2),
-(2, 'Функционал', '2020-03-02 11:13:30', '2020-03-07 09:19:48', 2);
+(2, 'Функционал', '2020-03-02 11:13:30', '2020-03-07 09:19:48', 2),
+(3, 'Бла-бла-бла', '2020-03-12 00:00:00', '2020-03-23 00:00:00', 3);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `todos`
+-- Структура таблицы `works`
 --
 
-CREATE TABLE `todos` (
-  `todo_id` int(11) NOT NULL,
-  `todo_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `todo_date_created` datetime NOT NULL,
-  `todo_date_end` datetime NOT NULL,
+CREATE TABLE `works` (
+  `work_id` int(11) NOT NULL,
+  `work_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `work_date_created` datetime NOT NULL,
+  `work_date_end` datetime NOT NULL,
   `target_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 --
--- Дамп данных таблицы `todos`
+-- Дамп данных таблицы `works`
 --
 
-INSERT INTO `todos` (`todo_id`, `todo_name`, `todo_date_created`, `todo_date_end`, `target_id`) VALUES
+INSERT INTO `works` (`work_id`, `work_name`, `work_date_created`, `work_date_end`, `target_id`) VALUES
 (1, 'Сверстать рабочий стол', '2020-03-02 08:32:50', '2020-03-03 08:33:26', 1),
 (2, 'Сверстать проводник', '2020-03-02 10:35:52', '2020-03-07 07:20:38', 1),
 (3, 'Сверстать блокнот', '2020-03-02 11:37:30', '2020-03-07 09:39:23', 1);
@@ -159,10 +161,10 @@ ALTER TABLE `targets`
   ADD KEY `project_id` (`project_id`);
 
 --
--- Индексы таблицы `todos`
+-- Индексы таблицы `works`
 --
-ALTER TABLE `todos`
-  ADD PRIMARY KEY (`todo_id`),
+ALTER TABLE `works`
+  ADD PRIMARY KEY (`work_id`),
   ADD KEY `target_id` (`target_id`);
 
 --
@@ -173,27 +175,32 @@ ALTER TABLE `todos`
 -- AUTO_INCREMENT для таблицы `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT для таблицы `risks`
 --
 ALTER TABLE `risks`
   MODIFY `risk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT для таблицы `risk_types`
 --
 ALTER TABLE `risk_types`
   MODIFY `type_id` tinyint(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT для таблицы `targets`
 --
 ALTER TABLE `targets`
-  MODIFY `target_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `target_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT для таблицы `todos`
+-- AUTO_INCREMENT для таблицы `works`
 --
-ALTER TABLE `todos`
-  MODIFY `todo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `works`
+  MODIFY `work_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
@@ -202,7 +209,7 @@ ALTER TABLE `todos`
 -- Ограничения внешнего ключа таблицы `risks`
 --
 ALTER TABLE `risks`
-  ADD CONSTRAINT `risks_ibfk_1` FOREIGN KEY (`todo_id`) REFERENCES `todos` (`todo_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `risks_ibfk_1` FOREIGN KEY (`todo_id`) REFERENCES `works` (`work_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `risks_ibfk_2` FOREIGN KEY (`risk_type`) REFERENCES `risk_types` (`type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -212,10 +219,10 @@ ALTER TABLE `targets`
   ADD CONSTRAINT `targets_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`project_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ограничения внешнего ключа таблицы `todos`
+-- Ограничения внешнего ключа таблицы `works`
 --
-ALTER TABLE `todos`
-  ADD CONSTRAINT `todos_ibfk_1` FOREIGN KEY (`target_id`) REFERENCES `targets` (`target_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `works`
+  ADD CONSTRAINT `works_ibfk_1` FOREIGN KEY (`target_id`) REFERENCES `targets` (`target_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

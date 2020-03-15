@@ -49,7 +49,7 @@
             <?php
                 include './view/projects.html';
                 include './view/targets.html';
-                include './view/todos.html';
+                include './view/works.html';
             ?>
             </div>
         </main>

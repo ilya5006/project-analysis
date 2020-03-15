@@ -2,7 +2,7 @@ class ProjectAnalysis
 {
     projectId;
     projectName;
-    projectDateCreate;
+    projectDateCreated;
     projectDateEnd;
 
     targetId;
@@ -14,6 +14,43 @@ class ProjectAnalysis
     todoName;
     todoDateCreated;
     todoDateEnd;
+
+    async pushWork()
+    {
+
+    }
+
+    async getWorks()
+    {
+        let formData = new FormData();
+        formData.append('target_id', this.targetId);
+
+        let worksFetch = await fetch('./model/php/get-works-from-db.php', 
+        {
+            method: 'POST',
+            body: formData
+        });
+
+        let worksJSONArray = await worksFetch.json();
+
+        return worksJSONArray;
+    }
+
+    async showWorks()
+    {
+        let worksJSONArray = await this.getWorks();
+
+        allWorksDiv.innerHTML = '';
+
+        worksJSONArray.forEach((work) =>
+        {
+            allWorksDiv.insertAdjacentHTML('beforeEnd', `
+            <div class="item work" data-id="${work.work_id}", data-name="${work.work_name}", data-dateCreated="${work.work_date_created}", data-dateEnd="${work.target_date_end}"> 
+                <span class="item-title">${work.work_name}</span> 
+            </div>
+            `);
+        });
+    }
 
     async getTargets()
     {
