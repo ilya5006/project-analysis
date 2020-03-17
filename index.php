@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700&display=swap&subset=cyrillic-ext,latin-ext" rel="stylesheet"> 
     <!-- Styles -->
     <link rel="stylesheet" href="./view/css/style.css">
-    <link rel="stylesheet" href="./view/css/buttons.css">
     <link rel="stylesheet" href="./view/css/windows.css">
+    <link rel="stylesheet" href="./view/css/creating-project-form.css">
     <!-- Scripts -->
     <script src="./model/js/Classes/ProjectAnalysis.js" defer></script>
     <script src="./model/js/main.js" defer></script>
@@ -44,6 +44,7 @@
             </div>
             <div class="project-list">
             <?php
+                include './view/creating-project-form.html';
                 include './view/projects.html';
                 include './view/targets.html';
                 include './view/works.html';
