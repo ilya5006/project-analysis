@@ -39,7 +39,6 @@ allProjectsDiv.addEventListener('click', (event) =>
 
         document.querySelector('#targets').style.display = 'flex';
         document.querySelector('#works').style.display = 'none';
-
     }
 });
 
