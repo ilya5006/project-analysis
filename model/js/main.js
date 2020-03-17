@@ -38,7 +38,7 @@ allProjectsDiv.addEventListener('click', (event) =>
         projectAnalysis.showTargets();
 
         document.querySelector('#targets').style.display = 'flex';
-        // document.querySelector('#works').style.display = 'flex';
+        document.querySelector('#works').style.display = 'none';
 
     }
 });
