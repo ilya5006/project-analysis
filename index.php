@@ -42,9 +42,6 @@
                     <p class="task_total_risks"></p>
                 </div>
             </div>
-            <?php
-                include './view/buttons.html';
-            ?>
             <div class="project-list">
             <?php
                 include './view/projects.html';
