@@ -47,6 +47,7 @@
             <?php
                 include './view/creating-project-form.html';
                 include './view/creating-target-form.html';
+                include './view/creating-work-form.html';
                 include './view/projects.html';
                 include './view/targets.html';
                 include './view/works.html';

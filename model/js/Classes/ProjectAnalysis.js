@@ -17,7 +17,26 @@ class ProjectAnalysis
 
     async pushWork()
     {
+        let workName = creatingWorkForm.querySelector('#work-name').value;
+        let workDateCreated = creatingWorkForm.querySelector('#work-date-created').value;
+        let workDateEnd = creatingWorkForm.querySelector('#work-date-end').value;
 
+        let formData = new FormData();
+
+        formData.append('work_name', workName);
+        formData.append('work_date_created', workDateCreated);
+        formData.append('work_date_end', workDateEnd);
+        formData.append('target_id', this.targetId);
+
+        fetch('./model/php/push-work-to-db.php',
+        {
+            method: 'POST',
+            body: formData
+        })
+        .then(() =>
+        {
+            this.showWorks();
+        });
     }
 
     async getWorks()

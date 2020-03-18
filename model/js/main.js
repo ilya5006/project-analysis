@@ -10,19 +10,17 @@ let allWorksDiv = document.querySelector('#all-works');
 
 let creatingTargetForm = document.querySelector('#creating-target-form');
 let creatingProjectForm = document.querySelector('#creating-project-form');
+let creatingWorkForm = document.querySelector('#creating-work-form');
 
 let createProjectButton = document.querySelector('#project-create');
 let createTargetButton = document.querySelector('#target-create');
+let createWorkButton = document.querySelector('#work-create');
 
 let addProjectButton = document.querySelector('#add-project');
 let addTargetButton = document.querySelector('#add-target');
 let addWorkButton = document.querySelector('#add-work');
 
 let creatingForms = document.querySelectorAll('.creating-form');
-
-let tasksDuration = 0.0;
-let tasksRisks = 0.0;
-let tasksLaborInputs = 0.0;
 
 projectAnalysis.showProjects();
 
@@ -34,6 +32,11 @@ addProjectButton.addEventListener('click', () =>
 addTargetButton.addEventListener('click', () =>
 {
     creatingTargetForm.style.display = 'flex';
+});
+
+addWorkButton.addEventListener('click', () =>
+{
+    creatingWorkForm.style.display = 'flex';
 });
 
 creatingForms.forEach((form) =>
@@ -55,6 +58,11 @@ createProjectButton.addEventListener('click', () =>
 createTargetButton.addEventListener('click', () =>
 {
     projectAnalysis.pushTarget();
+});
+
+createWorkButton.addEventListener('click', () =>
+{
+    projectAnalysis.pushWork();
 });
 
 allProjectsDiv.addEventListener('click', (event) =>
@@ -79,9 +87,9 @@ allProjectsDiv.addEventListener('click', (event) =>
 
 allTargetsDiv.addEventListener('click', (event) =>
 {
-    let isProjectButton = event.target.tagName.toLowerCase() == 'span';
+    let isTargetButton = event.target.tagName.toLowerCase() == 'span';
 
-    if (isProjectButton)
+    if (isTargetButton)
     {
         let infoDiv = event.target.parentElement;
 
