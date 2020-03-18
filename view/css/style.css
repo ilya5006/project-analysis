@@ -47,23 +47,6 @@ div.project-list
     margin: 0 auto;
 }
 
-
-#task_creating_form  
-{
-    border: 1px solid black;
-    width: 500px;
-    height: 500px;
-
-    background-color: #ffffff;
-
-    position: absolute;
-
-    display: none;
-    align-self: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
 .task
 {
     border: 1px solid black;
