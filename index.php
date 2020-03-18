@@ -9,7 +9,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="./view/css/style.css">
     <link rel="stylesheet" href="./view/css/windows.css">
-    <link rel="stylesheet" href="./view/css/creating-project-form.css">
+    <link rel="stylesheet" href="./view/css/creating-form.css">
     <!-- Scripts -->
     <script src="./model/js/Classes/ProjectAnalysis.js" defer></script>
     <script src="./model/js/main.js" defer></script>
@@ -17,14 +17,14 @@
 <body>
     <div class="container">
         <main>
-            <div id="task_creating_form">
+            <!-- <div id="task_creating_form">
                 <button id="to_close_task_creating">Закрыть</button>
                 <input type="text" placeholder="Введите имя задачи" id="task_creating_name">
                 <input type="text" placeholder="Введите продолжительность задачи (часы): " id="task_creating_duration">
                 <input type="text" placeholder="Введите трудозатратность задачи (человеко-часов): " id="task_creating_labor_input">
                 <input type="text" placeholder="Введите вероятность риска задачи" id="task_creating_risk">
                 <button id="to_send_task">Готово</button>
-            </div>
+            </div> -->
 
             <div id="project">
                 <div class="tasks"> 
@@ -45,6 +45,7 @@
             <div class="project-list">
             <?php
                 include './view/creating-project-form.html';
+                include './view/creating-target-form.html';
                 include './view/projects.html';
                 include './view/targets.html';
                 include './view/works.html';

@@ -1,15 +1,13 @@
 let projectAnalysis = new ProjectAnalysis();
 
-let taskCreatingForm = document.querySelector('#task_creating_form');
-let toCloseTaskCreating = document.querySelector('#to_close_task_creating');
-let toSendTask = document.querySelector('#to_send_task');
 let taskTotal = document.querySelector('#task_total');
 let project = document.querySelector('#project');
 let tasks = document.querySelector('.tasks');
 let targets = document.querySelector('#targets');
 let allProjectsDiv = document.querySelector('#all-projects');
 let allTargetsDiv = document.querySelector('#all-targets');
-let allWorksDiv = document.querySelector('#all-works'); 
+let allWorksDiv = document.querySelector('#all-works');
+let targetCreateButton = document.querySelector('');
 
 let tasksDuration = 0.0;
 let tasksRisks = 0.0;

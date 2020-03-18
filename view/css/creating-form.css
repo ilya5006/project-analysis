@@ -1,0 +1,19 @@
+.creating-form
+{
+    position: absolute;
+    
+    margin-left: auto;
+    margin-right: auto;
+
+    left: 0;
+    right: 0;
+
+    border: 1px solid black;
+    width: 500px;
+    height: 500px;
+
+    background-color: #FFFFFF;
+
+    display: flex;
+    flex-flow: column nowrap;
+}
