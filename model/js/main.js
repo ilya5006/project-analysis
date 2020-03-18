@@ -7,7 +7,18 @@ let targets = document.querySelector('#targets');
 let allProjectsDiv = document.querySelector('#all-projects');
 let allTargetsDiv = document.querySelector('#all-targets');
 let allWorksDiv = document.querySelector('#all-works');
-let targetCreateButton = document.querySelector('');
+
+let creatingTargetForm = document.querySelector('#creating-target-form');
+let creatingProjectForm = document.querySelector('#creating-project-form');
+
+let createProjectButton = document.querySelector('#project-create');
+let createTargetButton = document.querySelector('#target-create');
+
+let addProjectButton = document.querySelector('#add-project');
+let addTargetButton = document.querySelector('#add-target');
+let addWorkButton = document.querySelector('#add-work');
+
+let creatingForms = document.querySelectorAll('.creating-form');
 
 let tasksDuration = 0.0;
 let tasksRisks = 0.0;
@@ -15,9 +26,35 @@ let tasksLaborInputs = 0.0;
 
 projectAnalysis.showProjects();
 
-toSendTask.addEventListener('click', () =>
+addProjectButton.addEventListener('click', () =>
 {
-    projectAnalysis.showTasks();
+    creatingProjectForm.style.display = 'flex';
+});
+
+addTargetButton.addEventListener('click', () =>
+{
+    creatingTargetForm.style.display = 'flex';
+});
+
+creatingForms.forEach((form) =>
+{
+    form.addEventListener('click', (event) =>
+    {
+        if (event.target.classList.contains('close-button'))
+        {
+            event.target.parentElement.style.display = 'none';
+        }
+    });
+});
+
+createProjectButton.addEventListener('click', () =>
+{
+    projectAnalysis.pushProject();
+});
+
+createTargetButton.addEventListener('click', () =>
+{
+    projectAnalysis.pushTarget();
 });
 
 allProjectsDiv.addEventListener('click', (event) =>
@@ -56,6 +93,5 @@ allTargetsDiv.addEventListener('click', (event) =>
         projectAnalysis.showWorks();
 
         document.querySelector('#works').style.display = 'flex';
-
     }
 });

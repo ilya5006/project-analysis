@@ -26,7 +26,7 @@
                 <button id="to_send_task">Готово</button>
             </div> -->
 
-            <div id="project">
+            <!-- <div id="project">
                 <div class="tasks"> 
                     <div class="task">
                         <p class="task_name"></p>
@@ -41,7 +41,8 @@
                     <p class="task_total_labor_input"></p>
                     <p class="task_total_risks"></p>
                 </div>
-            </div>
+            </div> -->
+            
             <div class="project-list">
             <?php
                 include './view/creating-project-form.html';

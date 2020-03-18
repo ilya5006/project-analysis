@@ -52,6 +52,30 @@ class ProjectAnalysis
         });
     }
 
+    async pushTarget()
+    {
+        let projectName = creatingTargetForm.querySelector('#target-name').value;
+        let projectDateCreated = creatingTargetForm.querySelector('#target-date-created').value;
+        let projectDateEnd = creatingTargetForm.querySelector('#target-date-end').value;
+
+        let formData = new FormData();
+
+        formData.append('target_name', projectName);
+        formData.append('target_date_created', projectDateCreated);
+        formData.append('target_date_end', projectDateEnd);
+        formData.append('project_id', this.projectId);
+
+        fetch('./model/php/push-target-to-db.php',
+        {
+            method: 'POST',
+            body: formData
+        })
+        .then(() =>
+        {
+            this.showTargets();
+        });
+    }
+    
     async getTargets()
     {
         let formData = new FormData();
@@ -84,7 +108,28 @@ class ProjectAnalysis
         });
     }
 
-    async pushProject() { }
+    async pushProject()
+    {
+        let projectName = creatingProjectForm.querySelector('#project-name').value;
+        let projectDateCreated = creatingProjectForm.querySelector('#project-date-created').value;
+        let projectDateEnd = creatingProjectForm.querySelector('#project-date-end').value;
+
+        let formData = new FormData();
+
+        formData.append('project_name', projectName);
+        formData.append('project_date_created', projectDateCreated);
+        formData.append('project_date_end', projectDateEnd);
+
+        fetch('./model/php/push-project-to-db.php',
+        {
+            method: 'POST',
+            body: formData
+        })
+        .then(() =>
+        {
+            this.showProjects();
+        });
+    }
 
     async getProjects()
     {
@@ -107,73 +152,5 @@ class ProjectAnalysis
             </div>
             `);
         });
-    }
-
-    async pushTask()
-    {
-        let taskName = document.querySelector('#task_creating_name').value;
-        let taskDuration = parseFloat(document.querySelector('#task_creating_duration').value);
-        let taskLaborInput = parseFloat(document.querySelector('#task_creating_labor_input').value);
-        let taskRisk = parseFloat(document.querySelector('#task_creating_risk').value);
-
-        let formData = new FormData();
-
-        formData.append('taskName', taskName);
-        formData.append('taskDuration', ! isNaN(taskDuration) ? taskDuration : 0);
-        formData.append('taskLaborInput', ! isNaN(taskLaborInput) ? taskLaborInput : 0);
-        formData.append('taskRisk', ! isNaN(taskRisk) ? taskRisk : 0);
-
-        fetch('./model/php/push-todos-to-db.php',  // Такой путь потому что он почему-то начинается с корня, а не с пути данного файла
-        {
-            method: 'POST',
-            body: formData
-        });
-
-        this.showTasks();
-    }
-
-    async getTasks()
-    {
-        tasks.innerHTML = '';
-
-        tasksDuration = 0.0;
-        tasksRisks = 0.0;
-        tasksLaborInputs = 0.0;
-
-        let tasksFetch = await fetch('./model/php/get-todos-from-db.php'); // Такой путь потому что он почему-то начинается с корня, а не с пути данного файла
-        let tasksJSONArray = await tasksFetch.json();
-
-        return tasksJSONArray;
-    }
-
-    async showTasks()
-    {
-        let tasksJSONArray = await this.getTasks();
-
-        tasksJSONArray.forEach((taskJSON) =>
-        {
-            let name = taskJSON.name;
-            let duration = taskJSON.duration;
-            let laborInput = taskJSON.laborInput;
-            let risk = taskJSON.risk;
-
-            tasksDuration += parseFloat(duration);
-            tasksRisks += parseFloat(risk);
-            tasksLaborInputs += parseFloat(laborInput);
-
-            tasks.insertAdjacentHTML('beforeEnd', `
-            <div class="task">
-                <p class="task_name"><span>Имя задачи:</span> ${name}</p>
-                <p class="task_durataion"><span>Время для выполнения задачи (часы):</span> ${duration}</p>
-                <p class="task_labor_input"><span>Трудозатраты на выполнение задачи (человеко-часов):</span> ${laborInput}</p>
-                <p class="task_risk"><span>Риски задачи:</span> ${risk}</p>
-            </div>
-            `);
-        });
-
-        taskTotal.querySelector('.task_total_duration').textContent = `Время выполнения: ${tasksDuration + tasksRisks}`;
-        taskTotal.querySelector('.task_total_labor_input').textContent = `Трудозатраты: ${tasksLaborInputs}`;
-
-        this.initProjectsButtons();
     }
 }
