@@ -6,5 +6,5 @@
     $targetDateEnd = $db->escapeString($_POST['target_date_end']);
     $targetProjectId = $db->escapeString($_POST['project_id']);
 
-    $db->queryExecute("INSERT INTO projects VALUES (NULL, '$targetName', '$targetDateCreated', '$targetDateEnd', '$targetProjectId')");
+    $db->queryExecute("INSERT INTO `targets` VALUES (NULL, '$targetName', '$targetDateCreated', '$targetDateEnd', '$targetProjectId')");
 ?>
